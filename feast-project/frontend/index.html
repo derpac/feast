@@ -8,27 +8,12 @@
     <style src="feast.css"></style>
 </head>
 <body>
-    <h1>FEA Upload</h1>
 
-    <form id="fileForm">
-        <input type="file" id="fileInput" name="file">
-        <button type="submit">Upload File</button>
-    </form>
-
-    <h1>Script Input</h1>
-    <textarea id="jsonInput" rows="10" cols="50">
-{
-    "nodes": {
-        "1": [0.0, 0.0],
-        "2": [1.0, 0.0]
-    },
-    "elements": {
-        "1": [1, 2]
-    }
-}
-    </textarea>
-    <button onclick="submitScript()">Submit Script</button>
-
-    <pre id="output"></pre>
+    <h2>Upload FEA JSON File</h2>
+    <input type="file" id="jsonFile">
+    <button onclick="uploadJson()">Run FEA</button>
+    
+    <h3>Deformation Plot</h3>
+    <canvas id="canvas" width="500" height="500"></canvas>
 </body>
 </html>
