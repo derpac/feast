@@ -1,12 +1,11 @@
-def input(file_path):
-    # dummy parser (update this for .msh or CSV parsing)
-    return {}, {}
+from fea_1d import solve_fea_1d
+from fea_2d import solve_fea_2d
 
-
-
-def solve_fea(nodes, elements):
-    # placeholder for solver logic
-    return {
-        "displacements": {node: [0.0, 0.0] for node in nodes},  # return nonsense results for now
-        "stresses": {el: 0.0 for el in elements}
-    }
+def run_fea(data):
+    element_type = next(iter(data['elements'].values()))['type']
+    if element_type == "bar":
+        return solve_fea_1d(data)
+    elif element_type == "bar2d":
+        return solve_fea_2d(data)
+    else:
+        raise ValueError("Unsupported element type: " + element_type)
