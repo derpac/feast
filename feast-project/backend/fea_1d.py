@@ -6,8 +6,8 @@ def solve_fea_1d(data):
     nodes = data['nodes']
     elements = data['elements']
     material = data['material']
-    bc_displacement = ['boundry_conditions']['displacements']
-    bc_force = ['boundry_conditions']['forces']
+    bc_displacement = data['boundary_conditions']['displacements']
+    bc_force = data['boundary_conditions']['forces']
 
     E = material['E']
     A = material['A']
@@ -45,4 +45,4 @@ def solve_fea_1d(data):
 
     u = np.linalg.solve(K, F)
     
-    return {str(i + 1): float(u[i]) for i in range(len(u))}
+    return {str(i + 1): [float(u[i]), 0.0] for i in range(len(u))}
